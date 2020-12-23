@@ -24,3 +24,19 @@
 .todo-item:hover {
   cursor: pointer;
 }
+
+.cosmic-js {
+  width: 30px;
+}
+
+.svelte {
+  width: 30px;
+}
+
+.blue {
+  color: #29abe2;
+}
+
+.footer {
+  margin-top: 4rem;
+}
