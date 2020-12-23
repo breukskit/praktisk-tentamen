@@ -7,10 +7,12 @@ class App {
   }
   handleSubmit(e) {
     e.preventDefault();
-    const todo = new Todo(this.input.value);
-    this.todos = [...this.todos, { ...todo }];
-    this.render();
-    this.input.value = '';
+    if (this.input.value !== '') {
+      const todo = new Todo(this.input.value);
+      this.todos = [...this.todos, { ...todo }];
+      this.render();
+      this.input.value = '';
+    }
   }
   setListeners() {
     this.form.addEventListener('submit', (e) => {
@@ -45,11 +47,11 @@ class App {
     this.list.innerHTML = '';
     this.todos.forEach((todo) => {
       const li = document.createElement('li');
-      li.classList.add('d-flex', 'justify-content-between', 'py-3', 'px-1');
+      li.classList.add('d-flex', 'justify-content-between', 'p-1');
       li.id = todo.id;
 
       const div = document.createElement('div');
-      div.classList.add('d-flex');
+      div.classList.add('d-flex', 'flex-grow-1');
 
       const todoCheck = document.createElement('span');
       todo.isCompleted
@@ -62,15 +64,25 @@ class App {
       const todoItem = document.createElement('p');
       todoItem.textContent = todo.title;
       todo.isCompleted
-        ? todoItem.classList.add('text-decoration-line-through', 'todo-item')
-        : todoItem.classList.add('todo-item');
+        ? todoItem.classList.add(
+            'text-decoration-line-through',
+            'todo-item',
+            'flex-grow-1'
+          )
+        : todoItem.classList.add('todo-item', 'flex-grow-1');
 
       todoItem.addEventListener('click', (e) => {
         this.toggleTodo(e);
       });
 
       const todoTrash = document.createElement('span');
-      todoTrash.classList.add('trash');
+      todoTrash.classList.add(
+        'trash',
+        'px-2',
+        'd-flex',
+        'justify-content-center',
+        'align-items-center'
+      );
       todoTrash.addEventListener('click', (e) => {
         this.removeTodo(e);
       });
