@@ -1,0 +1,25 @@
+.header {
+  background-color: #6495ed;
+  color: white;
+  padding: 2.5rem;
+}
+
+.trash {
+  color: #dc3846;
+}
+
+.trash:hover {
+  cursor: pointer;
+}
+
+.check {
+  color: #2aa746;
+}
+
+.unfinished {
+  display: none;
+}
+
+.todo-item:hover {
+  cursor: pointer;
+}
